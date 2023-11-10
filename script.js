@@ -1,7 +1,7 @@
 function getComputerChoice () {
 const possibilities =["rock", "paper", "scisor"];
 const choiceIndex = Math.floor(Math.random() * possibilities.length);
-const choice = possibilities[choiceIndex];
+choice = possibilities[choiceIndex];
 return  choice;
 }
 
@@ -26,52 +26,46 @@ return [text, computerSelection, playerSelection, playerScore, computerScore]
 let playerScore = 0;
 let computerScore = 0;
 
-/*function game() {
-    while (playerScore < 5 && computerScore < 5){ pourquoi &&(et) marche et pas ||(ou)
-        playRound();
+function game(playerSelection, computerSelection) {
+    if (playerScore < 5 && computerScore < 5){
+        playRound(playerSelection, getComputerChoice());
+            //resultat actuel
+        const resultat = document.querySelector("#resultat");
+        resultat.innerHTML = "";
+        const score = document.createElement("div");
+        score.textContent =`"L'ordinateur joue ${choice} ! le resultat est : ${text}"`;
+        resultat.appendChild(score);
+
+    //resultat total
+        const scoreRunning = document.createElement ("div");
+        resultatRunning.innerHTML = "";
+        scoreRunning.textContent = `"le score actuel est de ${playerScore} pour le misérable humain à ${computerScore}`;
+        resultatRunning.appendChild(scoreRunning);
     }
 
-if (playerScore == 5){
-    return `Ton score :${playerScore} contre ordi :${computerScore}. Bravo, T'as gagné`;
+    if (playerScore == 5){
+        return alert("Tu es le meilleur joueur");
 }
-if (computerScore == 5) {
-    return `Ton score :${playerScore} contre ordi  :${computerScore}. T'as perdu`;
+    if (computerScore == 5) {
+        return alert("Tu es nul");
 }
 }
 
-console.log(game());*/
 
-/*UI*/
+
+//UI 
 const rock = document.querySelector("#rock");
 rock.addEventListener('click', () => {
-    const computerSelection = getComputerChoice();
-    playRound("rock", computerSelection);
+game("rock", getComputerChoice());
 
-
-    const resultat = document.querySelector("#resultat")
-    const score = document.createElement("div")
-    score.textContent =`"le resultat est : ${text}"`
-    resultat.appendChild(score)
 })
 
 const paper =  document.querySelector("#paper");
 paper.addEventListener('click', () => {
-    const computerSelection = getComputerChoice();
-    playRound("paper", computerSelection);
-
-    const resultat = document.querySelector("#resultat")
-    const score = document.createElement("div")
-    score.textContent =`"le resultat est : ${text}"`
-    resultat.appendChild(score)
+game("paper", getComputerChoice());
 })
 
 const scisor =  document.querySelector("#scisor");
 scisor.addEventListener('click', () => {
-    const computerSelection = getComputerChoice();
-    playRound("scisor", computerSelection);
-
-    const resultat = document.querySelector("#resultat")
-    const score = document.createElement("div")
-    score.textContent =`"le resultat est : ${text}"`
-    resultat.appendChild(score)
+playRound("scisor", getComputerChoice());
 })

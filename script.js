@@ -5,9 +5,8 @@ const choice = possibilities[choiceIndex];
 return  choice;
 }
 
-function playRound() {
-    const playerSelection = prompt("rock, paper or scisor?").toLowerCase();
-    const computerSelection = getComputerChoice();
+function playRound(playerSelection, computerSelection) {
+
     if (playerSelection == computerSelection){
     text = "Tie";
     }else  if  ((playerSelection == "rock" && computerSelection == "scisor") ||
@@ -23,11 +22,12 @@ function playRound() {
 return [text, computerSelection, playerSelection, playerScore, computerScore]
 }
 
+
 let playerScore = 0;
 let computerScore = 0;
 
-function game() {
-    while (playerScore < 5 && computerScore < 5){ /*pourquoi &&(et) marche et pas ||(ou)*/
+/*function game() {
+    while (playerScore < 5 && computerScore < 5){ pourquoi &&(et) marche et pas ||(ou)
         playRound();
     }
 
@@ -39,4 +39,39 @@ if (computerScore == 5) {
 }
 }
 
-console.log(game());
+console.log(game());*/
+
+/*UI*/
+const rock = document.querySelector("#rock");
+rock.addEventListener('click', () => {
+    const computerSelection = getComputerChoice();
+    playRound("rock", computerSelection);
+
+
+    const resultat = document.querySelector("#resultat")
+    const score = document.createElement("div")
+    score.textContent =`"le resultat est : ${text}"`
+    resultat.appendChild(score)
+})
+
+const paper =  document.querySelector("#paper");
+paper.addEventListener('click', () => {
+    const computerSelection = getComputerChoice();
+    playRound("paper", computerSelection);
+
+    const resultat = document.querySelector("#resultat")
+    const score = document.createElement("div")
+    score.textContent =`"le resultat est : ${text}"`
+    resultat.appendChild(score)
+})
+
+const scisor =  document.querySelector("#scisor");
+scisor.addEventListener('click', () => {
+    const computerSelection = getComputerChoice();
+    playRound("scisor", computerSelection);
+
+    const resultat = document.querySelector("#resultat")
+    const score = document.createElement("div")
+    score.textContent =`"le resultat est : ${text}"`
+    resultat.appendChild(score)
+})
